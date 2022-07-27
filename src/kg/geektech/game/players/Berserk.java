@@ -9,6 +9,7 @@ public class Berserk extends Hero {
 
     @Override
     public void applySuperPower(Hero[] heroes, Boss boss) {
+hit(boss);
 
     }
 
@@ -18,5 +19,12 @@ public class Berserk extends Hero {
 
     public void setSavedDamage(int savedDamage) {
         this.savedDamage = savedDamage;
+    }
+
+    public void hit(Boss boss) {
+        if (this.getHealth() > 0 && boss.getHealth() > 0) {
+            boss.setHealth(boss.getHealth()
+                    - this.getDamage() - this.getSavedDamage());
+        }
     }
 }
